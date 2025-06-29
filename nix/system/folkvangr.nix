@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   imports = [
     ./configuration.nix
@@ -7,4 +12,5 @@
   wsl.defaultUser = "witch";
   networking.hostName = "Folkvangr";
   programs.nix-ld.enable = true;
+  documentation.dev.enable = true;
 }
