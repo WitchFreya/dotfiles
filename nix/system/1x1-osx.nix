@@ -1,5 +1,4 @@
 { ... }:
-
 {
   imports = [
     ./configuration.nix
@@ -13,4 +12,13 @@
   nix.enable = false;
 
   security.pam.services.sudo_local.touchIdAuth = true;
+
+  homebrew = {
+    enable = true;
+    onActivation = {
+      autoUpdate = true;
+      cleanup = "zap";
+      upgrade = true;
+    };
+  };
 }

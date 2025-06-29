@@ -10,13 +10,15 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = {
-      self,
+  outputs =
+    {
       nix-darwin,
       nixpkgs,
       nixos-wsl,
       home-manager,
-    }: {
+      ...
+    }:
+    {
       homeConfigurations = {
         "witch@Folkvangr" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -29,8 +31,6 @@
         system = "aarch64-darwin";
         modules = [
           ./nix/system/1x1-osx.nix
-          ./modules/apps.nix
-          ./modules/homebrew.nix
         ];
       };
 
