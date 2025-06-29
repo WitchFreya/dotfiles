@@ -23,7 +23,16 @@
         "witch@Folkvangr" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [
+            ./nix/home/shared.nix
             ./nix/home/folkvangr.nix
+          ];
+        };
+
+        "witch@1x1-osx" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+          modules = [
+            ./nix/home/shared.nix
+            ./nix/home/1x1-osx.nix
           ];
         };
       };
