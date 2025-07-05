@@ -39,15 +39,21 @@
       darwinConfigurations."1x1-osx" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
-          ./nix/system/1x1-osx.nix
+          {
+            networking.hostName = "1x1-osx";
+          }
+          ./nix/system/darwin-nix.nix
         ];
       };
 
       nixosConfigurations.Folkvangr = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          {
+            networking.hostName = "Folkvangr";
+          }
           nixos-wsl.nixosModules.default
-          ./nix/system/folkvangr.nix
+          ./nix/system/nixos-wsl.nix.nix
         ];
       };
     };
