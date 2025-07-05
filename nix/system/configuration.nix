@@ -16,4 +16,5 @@
     nixfmt-rfc-style
     nixd
   ];
+  environment.pathsToLink = [ "/share/zsh" ];
 }
