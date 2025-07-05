@@ -42,7 +42,7 @@
           {
             networking.hostName = "1x1-osx";
           }
-          ./nix/system/darwin-nix.nix
+          ./nix/system/nix-darwin.nix
         ];
       };
 
@@ -53,7 +53,7 @@
             networking.hostName = "Folkvangr";
           }
           nixos-wsl.nixosModules.default
-          ./nix/system/nixos-wsl.nix.nix
+          ./nix/system/wsl-nixos.nix.nix
         ];
       };
     };
