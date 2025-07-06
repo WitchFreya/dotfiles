@@ -13,6 +13,10 @@
 
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  users.users.witch = {
+    home = "/Users/witch";
+  };
+
   homebrew = {
     enable = true;
     onActivation = {
