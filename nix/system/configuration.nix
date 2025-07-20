@@ -17,6 +17,7 @@
     nixd
     direnv
   ];
+  fonts.packages = with pkgs; [ nerd-fonts.fira-code ];
   environment.pathsToLink = [ "/share/zsh" ];
   programs.zsh.enable = true;
   time.timeZone = "America/Los_Angeles";

@@ -9,7 +9,10 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
-    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+    nix4vscode = {
+      url = "github:nix-community/nix4vscode";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -19,7 +22,7 @@
       nixos-wsl,
       home-manager,
       mac-app-util,
-      nix-vscode-extensions,
+      nix4vscode,
       ...
     }:
     {
@@ -30,9 +33,7 @@
           mac-app-util.darwinModules.default
           ./nix/system/nix-darwin.nix
           {
-            nixpkgs.overlays = [
-              nix-vscode-extensions.overlays.default
-            ];
+            nixpkgs.overlays = [ nix4vscode.overlays.default ];
             home-manager.sharedModules = [
               mac-app-util.homeManagerModules.default
             ];
