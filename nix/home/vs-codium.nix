@@ -8,31 +8,35 @@
       enableExtensionUpdateCheck = false;
       userSettings = builtins.fromJSON (builtins.readFile ../../.vscode/settings.json);
       extensions =
-        pkgs.nix4vscode.forVscode [
-          # visuals
-          "akamud.vscode-theme-onedark"
-          "pkief.material-icon-theme"
+        let
+          freeExtensions = [
+            # visuals
+            "pkief.material-icon-theme"
+            "akamud.vscode-theme-onedark"
 
-          # basic features
-          "mkhl.direnv"
-          "streetsidesoftware.code-spell-checker"
-          "wmaurer.change-case"
-          "firefox-devtools.vscode-firefox-debug"
-          "fill-labs.dependi"
-          "editorconfig.editorconfig"
-          "esbenp.prettier-vscode"
-          "ue.alphabetical-sorter"
-          "gruntfuggly.todo-tree"
-          "eamodio.gitlens"
+            # basic features
+            "mkhl.direnv"
+            "streetsidesoftware.code-spell-checker"
+            "wmaurer.change-case"
+            "firefox-devtools.vscode-firefox-debug"
+            "fill-labs.dependi"
+            "editorconfig.editorconfig"
+            "esbenp.prettier-vscode"
+            "gruntfuggly.todo-tree"
+            "eamodio.gitlens"
 
-          # language-specific
-          "tamasfe.even-better-toml"
-          "dbaeumer.vscode-eslint"
-          "yoavbls.pretty-ts-errors"
-        ]
-        ++ pkgs.nix4vscode.forOpenVsx [
-          "jnoortheen.nix-ide"
-        ];
+            # language support
+            "tamasfe.even-better-toml"
+            "dbaeumer.vscode-eslint"
+            "yoavbls.pretty-ts-errors"
+            "jnoortheen.nix-ide"
+          ];
+          unfreeExtensions = [
+            # basic features
+            "ue.alphabetical-sorter"
+          ];
+        in
+        pkgs.nix4vscode.forOpenVsx freeExtensions ++ pkgs.nix4vscode.forVscode unfreeExtensions;
     };
   };
 }
