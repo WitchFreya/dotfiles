@@ -13,6 +13,7 @@
       url = "github:nix-community/nix4vscode";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs =
@@ -23,6 +24,7 @@
       home-manager,
       mac-app-util,
       nix4vscode,
+      flake-utils,
       ...
     }:
     {
@@ -45,30 +47,55 @@
         ];
       };
 
-      nixosConfigurations.Folkvangr = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          nixos-wsl.nixosModules.default
-          home-manager.nixosModules.home-manager
-          ./nix/system/wsl-nixos.nix
-          {
-            networking.hostName = "Folkvangr";
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.witch = import ./nix/home/folkvangr.nix;
-          }
-        ];
-      };
-
-      devShells."${builtins.currentSystem}".default =
-        let
-          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-        in
-        pkgs.mkShell {
-          packages = with pkgs; [
-            nixfmt-rfc-style
-            nixd
+      nixosConfigurations = {
+        Folkvangr = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            nixos-wsl.nixosModules.default
+            home-manager.nixosModules.home-manager
+            ./nix/system/wsl-nixos.nix
+            {
+              networking.hostName = "Folkvangr";
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.witch = import ./nix/home/folkvangr.nix;
+            }
           ];
         };
+
+        liveIso = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            (
+              { pkgs, modulesPath, ... }:
+              {
+                imports = [ (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix") ];
+                environment.systemPackages = [ pkgs.neovim ];
+                isoImage.squashfsCompression = "gzip -Xcompression-level 1";
+                systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
+                users.users.root.openssh.authorizedKeys.keys = [
+                  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFPmZTMA6pUYhm8RxKRF6x7QMVGcueMnTrdOn1btnkRd"
+                ];
+                networking.hostName = "wolfbox";
+              }
+            )
+          ];
+        };
+      };
+
+      devShells = flake-utils.lib.eachDefaultSystemPassThrough (
+        system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          ${system}.default = pkgs.mkShell {
+            packages = with pkgs; [
+              nixfmt-rfc-style
+              nixd
+            ];
+          };
+        }
+      );
     };
 }
