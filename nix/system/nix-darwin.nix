@@ -5,6 +5,7 @@
   ];
   system.primaryUser = "witch";
   system.stateVersion = 6;
+  # allow sudo auth with touch id
   security.pam.services.sudo_local.touchIdAuth = true;
   nix.linux-builder = {
     enable = true;
