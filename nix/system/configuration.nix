@@ -1,5 +1,5 @@
 # Root configuration for all systems.
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";
@@ -20,4 +20,16 @@
   environment.pathsToLink = [ "/share/zsh" ];
   programs.zsh.enable = true;
   time.timeZone = "America/Los_Angeles";
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+
+  home-manager.users.witch = {
+    imports = [
+      ../home/common.nix
+    ];
+    home.homeDirectory = lib.mkDefault "/home/witch";
+    programs.zsh.shellAliases = {
+      upgrade = "sudo nixos-rebuild switch --flake ~/vcs/dotfiles";
+    };
+  };
 }
