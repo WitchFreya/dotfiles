@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 {
   imports = [
     ./configuration.nix
@@ -28,4 +28,5 @@
       upgrade = true;
     };
   };
+  programs.ssh.extraConfig = lib.strings.readFile ../../ssh/witch_1x1-osx.config;
 }

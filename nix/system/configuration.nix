@@ -28,8 +28,5 @@
       ../home/common.nix
     ];
     home.homeDirectory = lib.mkDefault "/home/witch";
-    programs.zsh.shellAliases = {
-      upgrade = "sudo nixos-rebuild switch --flake ~/vcs/dotfiles";
-    };
   };
 }
