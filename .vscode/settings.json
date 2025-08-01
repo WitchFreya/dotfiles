@@ -6,16 +6,13 @@
   "editor.guides.bracketPairs": "active",
   "editor.inlayHints.enabled": "offUnlessPressed",
   "extensions.autoUpdate": false,
-
   "workbench.colorTheme": "Default Dark Modern",
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
   "cSpell.language": "en,en-US",
-
   "githubPullRequests.terminalLinksHandler": "github",
   "gitlens.rebaseEditor.ordering": "asc",
-
   "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
   "javascript.inlayHints.parameterNames.enabled": "all",
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
@@ -33,7 +30,6 @@
     ]
   },
   "javascript.updateImportsOnFileMove.enabled": "prompt",
-
   "[typescript]": {
     "editor.codeActionsOnSave": [
       "source.formatDocument",
@@ -46,7 +42,12 @@
       "source.fixAll.eslint"
     ]
   },
-
+  "[mdx]": {
+    "editor.wordWrap": "on"
+  },
+  "[nix]": {
+    "editor.defaultFormatter": "jnoortheen.nix-ide"
+  },
   "nix.enableLanguageServer": true,
   "nix.serverSettings": {
     "nixd": {
@@ -54,9 +55,6 @@
         "command": ["nixfmt"]
       }
     }
-  },
-  "[nix]": {
-    "editor.defaultFormatter": "jnoortheen.nix-ide"
   },
   "nix.serverPath": "nixd"
 }
