@@ -6,7 +6,7 @@
     profiles.default = {
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
-      userSettings = builtins.fromJSON (builtins.readFile ../../.vscode/settings.json);
+      userSettings = builtins.fromJSON (builtins.readFile ./vs-codium.settings.json);
       extensions =
         let
           freeExtensions = [
@@ -24,6 +24,7 @@
             "esbenp.prettier-vscode"
             "gruntfuggly.todo-tree"
             "eamodio.gitlens"
+            "GitHub.vscode-pull-request-github"
 
             # language support
             "tamasfe.even-better-toml"
