@@ -30,6 +30,7 @@
   };
 
   boot = {
+    loader.systemd-boot.memtest86.enable = true;
     kernelPackages = pkgs.linuxPackages_latest;
     supportedFilesystems = lib.mkForce [
       "btrfs"
