@@ -29,11 +29,11 @@
             "tamasfe.even-better-toml"
             "dbaeumer.vscode-eslint"
             "yoavbls.pretty-ts-errors"
-            "jnoortheen.nix-ide"
             "unifiedjs.vscode-mdx"
           ];
           unfreeExtensions = [
             # basic features
+            "jnoortheen.nix-ide"
             "ue.alphabetical-sorter"
           ];
         in
