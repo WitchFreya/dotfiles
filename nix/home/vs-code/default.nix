@@ -7,7 +7,7 @@
     profiles.default = {
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
-      userSettings = builtins.fromJSON (builtins.readFile ./vs-codium.settings.json);
+      userSettings = builtins.fromJSON (builtins.readFile ./user-settings.json);
       extensions =
         let
           unfreeExtensions = [ ];
