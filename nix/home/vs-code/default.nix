@@ -43,6 +43,7 @@
             "yoavbls.pretty-ts-errors"
             "unifiedjs.vscode-mdx"
             "jnoortheen.nix-ide"
+            "yzhang.markdown-all-in-one"
           ];
         in
         pkgs.nix4vscode.forVscode unfreeExtensions ++ pkgs.nix4vscode.forOpenVsx freeExtensions;
