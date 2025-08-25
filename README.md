@@ -7,6 +7,7 @@
 1. Grant the terminal emulator Full Disk Access.
 2. Install using the [Lix Installer](https://lix.systems/).
 3. Install [nix-darwin](https://github.com/nix-darwin/nix-darwin)
+4. Install [homebrew](https://docs.brew.sh/Installation) since it won't be done automatically.
 4. Clone the repo.
 5. Set up [flake.nix](./flake.nix) for the new environment if necessary.
 6. Run `sudo darwin-rebuild switch --flake [path_to_repo]`
