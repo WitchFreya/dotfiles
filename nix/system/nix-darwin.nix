@@ -32,6 +32,7 @@
     casks = [
       "firefox"
       "bettertouchtool"
+      "1password"
     ];
   };
   programs.ssh.extraConfig = lib.strings.readFile ../../ssh/witch_1x1-osx.config;
