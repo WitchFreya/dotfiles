@@ -15,4 +15,9 @@
   };
 
   programs.ssh.extraConfig = lib.strings.readFile ../../../ssh/witch_1x1-osx.config;
+  nix.gc.interval = {
+    Weekday = 7;
+    Hour = 0;
+    Minute = 0;
+  };
 }
