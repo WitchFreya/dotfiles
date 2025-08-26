@@ -8,7 +8,7 @@
   imports = [
     (modulesPath + "/installer/cd-dvd/installation-cd-graphical-gnome.nix")
     ./openssh.nix
-    ./configuration.nix
+    ./shared.nix
   ];
   environment.systemPackages = with pkgs; [ neovim ];
   isoImage.squashfsCompression = "gzip -Xcompression-level 1";
