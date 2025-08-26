@@ -6,15 +6,6 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
-    homebrew-core = {
-      url = "github:homebrew/homebrew-core";
-      flake = false;
-    };
-    homebrew-cask = {
-      url = "github:homebrew/homebrew-cask";
-      flake = false;
-    };
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,7 +35,6 @@
       mac-app-util,
       flake-utils,
       lix-module,
-      nix-homebrew,
       ...
     }:
     let
@@ -54,7 +44,6 @@
           system = "aarch64-darwin";
           specialArgs = { inherit self; };
           modules = [
-            nix-homebrew.darwinModules.nix-homebrew
             home-manager.darwinModules.home-manager
             mac-app-util.darwinModules.default
             lix-module.nixosModules.default
