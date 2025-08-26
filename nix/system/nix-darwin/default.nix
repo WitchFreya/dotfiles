@@ -27,5 +27,5 @@
       "todoist-app"
     ];
   };
-  programs.ssh.extraConfig = lib.strings.readFile ../../ssh/witch_1x1-osx.config;
+  programs.ssh.extraConfig = lib.strings.readFile ../../../ssh/witch_1x1-osx.config;
 }
