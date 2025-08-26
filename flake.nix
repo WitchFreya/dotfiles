@@ -6,6 +6,15 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    homebrew-core = {
+      url = "github:homebrew/homebrew-core";
+      flake = false;
+    };
+    homebrew-cask = {
+      url = "github:homebrew/homebrew-cask";
+      flake = false;
+    };
     lix-module = {
       url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,24 +44,32 @@
       mac-app-util,
       flake-utils,
       lix-module,
+      nix-homebrew,
       ...
     }:
+    let
+      sharedModules.nix-darwin = [
+        nix-homebrew.darwinModules.nix-homebrew
+        home-manager.darwinModules.home-manager
+        mac-app-util.darwinModules.default
+        lix-module.nixosModules.default
+        ./nix/system/nix-darwin.nix
+        {
+          home-manager.sharedModules = [
+            mac-app-util.homeManagerModules.default
+          ];
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+        }
+      ];
+    in
     {
       darwinConfigurations."1x1-osx" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = { inherit self; };
-        modules = [
-          home-manager.darwinModules.home-manager
-          mac-app-util.darwinModules.default
-          lix-module.nixosModules.default
-          ./nix/system/nix-darwin.nix
+        modules = sharedModules.nix-darwin ++ [
           {
-            home-manager.sharedModules = [
-              mac-app-util.homeManagerModules.default
-            ];
             networking.hostName = "1x1-osx";
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
             home-manager.users.witch = import ./nix/home/1x1-osx.nix;
           }
         ];
@@ -61,18 +78,9 @@
       darwinConfigurations.summer-osx = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = { inherit self; };
-        modules = [
-          home-manager.darwinModules.home-manager
-          mac-app-util.darwinModules.default
-          lix-module.nixosModules.default
-          ./nix/system/nix-darwin.nix
+        modules = sharedModules.nix-darwin ++ [
           {
-            home-manager.sharedModules = [
-              mac-app-util.homeManagerModules.default
-            ];
             networking.hostName = "summer-osx";
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
             home-manager.users.witch = import ./nix/home/summer-osx.nix;
           }
         ];
