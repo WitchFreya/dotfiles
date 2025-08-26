@@ -48,43 +48,33 @@
       ...
     }:
     let
-      sharedModules.nix-darwin = [
-        nix-homebrew.darwinModules.nix-homebrew
-        home-manager.darwinModules.home-manager
-        mac-app-util.darwinModules.default
-        lix-module.nixosModules.default
-        ./nix/system/nix-darwin.nix
-        {
-          home-manager.sharedModules = [
-            mac-app-util.homeManagerModules.default
+      darwinSystem =
+        primaryUser: hostName:
+        nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          specialArgs = { inherit self; };
+          modules = [
+            nix-homebrew.darwinModules.nix-homebrew
+            home-manager.darwinModules.home-manager
+            mac-app-util.darwinModules.default
+            lix-module.nixosModules.default
+            ./nix/system/nix-darwin.nix
+            {
+              home-manager.sharedModules = [
+                mac-app-util.homeManagerModules.default
+              ];
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              networking.hostName = hostName;
+              home-manager.users."${primaryUser}" = import ./nix/home/${hostName}.nix;
+            }
           ];
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-        }
-      ];
+        };
     in
     {
-      darwinConfigurations."1x1-osx" = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = { inherit self; };
-        modules = sharedModules.nix-darwin ++ [
-          {
-            networking.hostName = "1x1-osx";
-            home-manager.users.witch = import ./nix/home/1x1-osx.nix;
-          }
-        ];
-      };
+      darwinConfigurations."1x1-osx" = darwinSystem "witch" "1x1-osx";
 
-      darwinConfigurations.summer-osx = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = { inherit self; };
-        modules = sharedModules.nix-darwin ++ [
-          {
-            networking.hostName = "summer-osx";
-            home-manager.users.witch = import ./nix/home/summer-osx.nix;
-          }
-        ];
-      };
+      darwinConfigurations.summer-osx = darwinSystem "witch" "summer-osx";
 
       nixosConfigurations = {
         Folkvangr = nixpkgs.lib.nixosSystem {
