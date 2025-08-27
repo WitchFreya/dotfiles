@@ -1,4 +1,4 @@
-{ self, ... }:
+{ self, pkgs, ... }:
 {
   imports = [
     ../common/homebrew.nix
@@ -20,4 +20,8 @@
 
   # To set to light mode, set this to null and you’ll need to manually run defaults delete -g AppleInterfaceStyle.
   system.defaults.NSGlobalDomain.AppleInterfaceStyle = "Dark";
+
+  environment.systemPackages = with pkgs; [
+    heroku
+  ];
 }
