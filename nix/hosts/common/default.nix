@@ -29,7 +29,7 @@
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users."${config.system.primaryUser or config.wsl.defaultUser}" =
-    import ../../home/${config.networking.hostName}.nix;
+    import ../../home/${config.networking.hostName};
   home-manager.sharedModules =
     if pkgs.stdenv.isDarwin then
       [
