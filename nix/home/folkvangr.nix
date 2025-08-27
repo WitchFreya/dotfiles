@@ -3,7 +3,6 @@
   imports = [
     ./common.nix
   ];
-  home.homeDirectory = "/home/witch";
   programs.git.extraConfig = {
     core.sshCommand = "ssh.exe";
   };
