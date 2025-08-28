@@ -4,6 +4,7 @@
     ../../modules/git.nix
     ./shell.nix
     ./nix-direnv.nix
+    ./github.nix
   ];
   home =
     let
