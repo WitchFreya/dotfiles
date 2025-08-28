@@ -1,6 +1,12 @@
-{ self, pkgs, ... }:
+{
+  self,
+  pkgs,
+  config,
+  ...
+}:
 {
   imports = [
+    self.inputs.opnix.homeManagerModules.default
     self.inputs._1password-shell-plugins.hmModules.default
   ];
 
@@ -14,6 +20,7 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    sessionVariables = config.home.sessionVariables;
     shellAliases = {
       cat = "bat";
     };

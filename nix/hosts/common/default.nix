@@ -5,6 +5,9 @@
   self,
   ...
 }:
+let
+  primaryUser = config.system.primaryUser or config.wsl.defaultUser;
+in
 {
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = "nix-command flakes";
@@ -28,8 +31,7 @@
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users."${config.system.primaryUser or config.wsl.defaultUser}" =
-    import ../../home/${config.networking.hostName};
+  home-manager.users."${primaryUser}" = import ../../home/${config.networking.hostName};
   home-manager.extraSpecialArgs = { inherit self; };
   home-manager.sharedModules =
     if pkgs.stdenv.isDarwin then

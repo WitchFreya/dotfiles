@@ -1,16 +1,19 @@
 { self, pkgs, ... }:
+let
+  primaryUser = "witch";
+in
 {
   imports = [
     ../common/homebrew.nix
   ];
   networking.hostName = "summer-osx";
   nixpkgs.overlays = [ self.inputs.nix4vscode.overlays.forVscode ];
-  system.primaryUser = "witch";
+  system.primaryUser = primaryUser;
   system.stateVersion = 6;
   # allow sudo auth with touch id
   security.pam.services.sudo_local.touchIdAuth = true;
   # necessary to get home-manager to behave.
-  users.users.witch.home = /Users/witch;
+  users.users.${primaryUser}.home = /Users/${primaryUser};
 
   nix.gc.interval = {
     Weekday = 7;
@@ -24,4 +27,18 @@
   environment.systemPackages = with pkgs; [
     heroku
   ];
+
+  services.onepassword-secrets = {
+    enable = true;
+    groupId = 601;
+    users = [ primaryUser ];
+    secrets = {
+      githubPackagesPAT = {
+        reference = "op://itnk7smgjjct3knlpk44qvhgmm/fh2hdwzebf2tpkrlmtfcbgyive/credential";
+        path = "/Users/${primaryUser}/.config/github.pat";
+        owner = primaryUser;
+        mode = "0600";
+      };
+    };
+  };
 }
