@@ -26,6 +26,5 @@
   ];
 
   homebrew.casks = [
-    "docker"
   ];
 }

@@ -1,6 +1,8 @@
-{ ... }:
+{ self, pkgs, ... }:
 {
   imports = [
+    self.inputs._1password-shell-plugins.hmModules.default
+    ./aws-cli.nix
     ../common
     ../common/vs-code
   ];
@@ -18,4 +20,10 @@
       enable = true;
       extraConfig = IdentityAgent;
     };
+  programs._1password-shell-plugins = {
+    enable = true;
+    plugins = with pkgs; [
+      gh
+    ];
+  };
 }
