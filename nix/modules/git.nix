@@ -23,12 +23,16 @@
       signing.signByDefault = true;
       signing.format = "ssh";
 
-      extraConfig = {
-        init.defaultBranch = "main";
-        core.editor = "code --wait";
-        pull.rebase = true;
-        gpg.ssh.allowedSignersFile = builtins.toString signersFile;
-        gpg.ssh.program = onePassSshPath;
-      };
+      extraConfig =
+        let
+          editor = if config.programs.vscode.package == pkgs.vscodium then "codium" else "code";
+        in
+        {
+          init.defaultBranch = "main";
+          core.editor = "${editor} --wait";
+          pull.rebase = true;
+          gpg.ssh.allowedSignersFile = builtins.toString signersFile;
+          gpg.ssh.program = onePassSshPath;
+        };
     };
 }
