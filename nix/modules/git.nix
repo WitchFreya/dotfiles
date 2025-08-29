@@ -22,6 +22,9 @@
       userName = "Freya Gaynor";
       signing.signByDefault = true;
       signing.format = "ssh";
+      ignores = [
+        ".env.op-template"
+      ];
 
       extraConfig =
         let
