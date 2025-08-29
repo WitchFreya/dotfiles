@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  programs.zsh.sessionVariables.EDITOR = "codium";
+  home.sessionVariables.EDITOR = "codium";
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
