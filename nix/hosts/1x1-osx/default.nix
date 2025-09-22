@@ -1,4 +1,4 @@
-{ lib, self, ... }:
+{ self, ... }:
 {
   imports = [
     ../common/homebrew.nix
@@ -12,7 +12,6 @@
   # necessary to get home-manager to behave.
   users.users.witch.home = /Users/witch;
 
-  programs.ssh.extraConfig = lib.strings.readFile ../../../ssh/witch_1x1-osx.config;
   nix.gc.interval = {
     Weekday = 7;
     Hour = 0;
