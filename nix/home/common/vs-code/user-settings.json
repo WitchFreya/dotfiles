@@ -74,5 +74,6 @@
   "editor.tabSize": 3,
   "editor.insertSpaces": false,
   "editor.detectIndentation": false,
-  "chat.agent.enabled": false
+  "chat.agent.enabled": false,
+  "workbench.startupEditor": "none"
 }
