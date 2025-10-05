@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
     ../common
@@ -10,4 +10,5 @@
     upgrade = "sudo nixos-rebuild switch --flake ~/vcs/dotfiles";
     ssh = "ssh.exe";
   };
+  home.packages = [ pkgs.dconf ];
 }
