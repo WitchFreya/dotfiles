@@ -72,9 +72,6 @@
         liveIso = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            {
-              networking.hostName = "wolfbox";
-            }
             ./nix/system/live-iso.nix
           ];
         };
