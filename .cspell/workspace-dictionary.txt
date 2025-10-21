@@ -1,0 +1,10 @@
+# Custom Dictionary Words
+direnv
+Folkvangr
+hraban
+nixd
+nixfmt
+nixos
+nixpkgs
+numtide
+Pkgs

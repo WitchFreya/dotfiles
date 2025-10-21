@@ -1,0 +1,11 @@
+version: "0.2"
+ignorePaths: []
+dictionaryDefinitions:
+  - name: workspace-dictionary
+    path: ./.cspell/workspace-dictionary.txt
+    addWords: true
+dictionaries:
+  - workspace-dictionary
+words: []
+ignoreWords: []
+import: []
