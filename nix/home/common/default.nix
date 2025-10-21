@@ -1,7 +1,7 @@
 { lib, pkgs, ... }:
 {
   imports = [
-    ../modules/git.nix
+    ../../modules/git.nix
     ./shell.nix
     ./nix-direnv.nix
   ];

@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./common.nix
+    ../common
   ];
   programs.git.extraConfig = {
     core.sshCommand = "ssh.exe";

@@ -1,11 +1,13 @@
 { ... }:
 {
   imports = [
-    ./common.nix
-    ./vs-code
+    ../common
+    ../common/vs-code
   ];
+  programs.git.userEmail = "freya.gaynor@meetsummer.com";
+  programs.git.signing.key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMOponRRd3mlOyzfeEhFovZaWH49JuzoOmeyP9Fnq9p0";
   programs.zsh.shellAliases = {
-    upgrade = "sudo darwin-rebuild switch --flake ~/vcs/dotfiles";
+    upgrade = "sudo darwin-rebuild switch --flake ~/Documents/vcs/dotfiles";
   };
   programs.ssh =
     let
