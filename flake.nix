@@ -70,5 +70,16 @@
             nixd
           ];
         };
+
+      devShells.aarch64-darwin.default =
+        let
+          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        in
+        pkgs.mkShell {
+          packages = with pkgs; [
+            nixfmt-rfc-style
+            nixd
+          ];
+        };
     };
 }
