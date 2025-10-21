@@ -1,7 +1,7 @@
 {
   "$schema": "vscode://schemas/settings/user",
   "workbench.iconTheme": "vs-seti",
-  "editor.fontFamily": "'FiraCode NFM', Consolas, 'Courier New', monospace",
+  "editor.fontFamily": "'FiraCode Nerd Font Mono', Consolas, 'Courier New', monospace",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": ["source.formatDocument"],
   "editor.guides.bracketPairs": "active",
