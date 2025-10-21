@@ -32,4 +32,8 @@
   programs.starship.enable = true;
   programs.zoxide.enable = true;
   programs._1password-shell-plugins.enable = true;
+  programs.nix-index = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 }
