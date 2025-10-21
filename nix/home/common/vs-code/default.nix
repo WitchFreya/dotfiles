@@ -11,7 +11,9 @@
       userSettings = builtins.fromJSON (builtins.readFile ./user-settings.json);
       extensions =
         let
-          unfreeExtensions = [ ];
+          unfreeExtensions = [
+            "threadheap.serverless-ide-vscode"
+          ];
           freeExtensions = [
             # visuals
             "pkief.material-icon-theme"
