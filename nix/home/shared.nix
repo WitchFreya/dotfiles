@@ -1,8 +1,13 @@
-{ ... }:
+{ pkgs, ... }:
 {
   home = {
     username = "witch";
     stateVersion = "25.11";
+    packages = with pkgs; [
+      starship
+      zsh
+      zoxide
+    ];
   };
   programs.git = {
     enable = true;
@@ -17,4 +22,12 @@
     core.editor = "code --wait";
     pull.rebase = true;
   };
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+
+    oh-my-zsh.enable = true;
+  };
+  programs.zoxide.enable = true;
 }
