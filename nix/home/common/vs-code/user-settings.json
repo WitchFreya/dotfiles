@@ -58,6 +58,10 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": ["source.formatDocument"]
   },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": ["source.formatDocument"]
+  },
   "nix.enableLanguageServer": true,
   "nix.serverSettings": {
     "nixd": {
