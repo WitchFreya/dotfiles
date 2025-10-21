@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./openssh.nix
     ./configuration.nix
   ];
   system.stateVersion = "24.11";

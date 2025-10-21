@@ -7,7 +7,7 @@
   "editor.inlayHints.enabled": "offUnlessPressed",
   "extensions.autoUpdate": false,
 
-  "workbench.colorTheme": "Atom One Dark",
+  "workbench.colorTheme": "Default Dark Modern",
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.defaultProfile.windows": "PowerShell",

@@ -30,6 +30,7 @@
             "dbaeumer.vscode-eslint"
             "yoavbls.pretty-ts-errors"
             "jnoortheen.nix-ide"
+            "unifiedjs.vscode-mdx"
           ];
           unfreeExtensions = [
             # basic features
