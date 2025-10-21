@@ -3,7 +3,7 @@
   imports = [
     ../common/homebrew.nix
   ];
-  networking.hostName = "summer-osx";
+  networking.hostName = "1x1-osx";
   nixpkgs.overlays = [ self.inputs.nix4vscode.overlays.forVscode ];
   system.primaryUser = "witch";
   system.stateVersion = 6;
