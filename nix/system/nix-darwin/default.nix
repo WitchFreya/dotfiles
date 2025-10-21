@@ -20,4 +20,6 @@
     Hour = 0;
     Minute = 0;
   };
+
+  system.defaults.NSGlobalDomain.AppleInterfaceStyle = "Dark";
 }
