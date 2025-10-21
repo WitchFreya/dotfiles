@@ -8,6 +8,7 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
   outputs =
@@ -16,6 +17,7 @@
       nix-darwin,
       nixos-wsl,
       home-manager,
+      mac-app-util,
       ...
     }:
     {
@@ -23,8 +25,12 @@
         system = "aarch64-darwin";
         modules = [
           home-manager.darwinModules.home-manager
+          mac-app-util.darwinModules.default
           ./nix/system/nix-darwin.nix
           {
+            home-manager.sharedModules = [
+              mac-app-util.homeManagerModules.default
+            ];
             networking.hostName = "1x1-osx";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
