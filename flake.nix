@@ -65,14 +65,6 @@
             ./nix/hosts/folkvangr
           ];
         };
-
-        liveIso = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            home-manager.nixosModules.home-manager
-            ./nix/system/live-iso.nix
-          ];
-        };
       };
 
       devShells = flake-utils.lib.eachDefaultSystemPassThrough (
