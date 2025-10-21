@@ -73,5 +73,6 @@
   "nix.serverPath": "nixd",
   "editor.tabSize": 3,
   "editor.insertSpaces": false,
-  "editor.detectIndentation": false
+  "editor.detectIndentation": false,
+  "chat.agent.enabled": false
 }
