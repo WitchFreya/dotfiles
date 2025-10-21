@@ -61,7 +61,7 @@
       };
 
       nixosConfigurations = {
-        Folkvangr = nixpkgs.lib.nixosSystem {
+        folkvangr = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit self; };
           modules = [
