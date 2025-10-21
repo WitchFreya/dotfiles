@@ -6,10 +6,6 @@
     nix-darwin.url = "github:nix-darwin/nix-darwin/master";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
-    lix-module = {
-      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     # wsl
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
@@ -34,7 +30,6 @@
       home-manager,
       mac-app-util,
       flake-utils,
-      lix-module,
       ...
     }:
     let
@@ -46,7 +41,6 @@
           modules = [
             home-manager.darwinModules.home-manager
             mac-app-util.darwinModules.default
-            lix-module.nixosModules.default
             ./nix/system/nix-darwin
             {
               home-manager.sharedModules = [
