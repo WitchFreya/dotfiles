@@ -11,3 +11,7 @@
 4. Clone the repo.
 5. Set up [flake.nix](./flake.nix) for the new environment if necessary.
 6. Run `sudo darwin-rebuild switch --flake [path_to_repo]`
+
+### Docker
+
+Docker really doesn't like to behave with homebrew, so if you need stuff with it, install it using the [Mac installer](https://docs.docker.com/desktop/setup/install/mac-install/).
