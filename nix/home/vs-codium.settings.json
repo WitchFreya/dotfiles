@@ -1,0 +1,69 @@
+{
+  "$schema": "vscode://schemas/settings/user",
+  "workbench.iconTheme": "vs-seti",
+  "editor.fontFamily": "'FiraCode NFM', Consolas, 'Courier New', monospace",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": ["source.formatDocument"],
+  "editor.guides.bracketPairs": "active",
+  "editor.inlayHints.enabled": "offUnlessPressed",
+  "extensions.autoUpdate": false,
+  "extensions.supportUntrustedPublishers": true,
+  "workbench.colorTheme": "Default Dark Modern",
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "cSpell.language": "en,en-US",
+  "githubPullRequests.terminalLinksHandler": "github",
+  "gitlens.rebaseEditor.ordering": "asc",
+  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "[javascript]": {
+    "editor.codeActionsOnSave": [
+      "source.formatDocument",
+      "source.fixAll.eslint"
+    ]
+  },
+  "[javascriptreact]": {
+    "editor.codeActionsOnSave": [
+      "source.formatDocument",
+      "source.fixAll.eslint"
+    ]
+  },
+  "javascript.updateImportsOnFileMove.enabled": "prompt",
+  "[typescript]": {
+    "editor.codeActionsOnSave": [
+      "source.formatDocument",
+      "source.fixAll.eslint"
+    ]
+  },
+  "[typescriptreact]": {
+    "editor.codeActionsOnSave": [
+      "source.formatDocument",
+      "source.fixAll.eslint"
+    ]
+  },
+  "[mdx]": {
+    "editor.wordWrap": "on"
+  },
+  "[nix]": {
+    "editor.defaultFormatter": "jnoortheen.nix-ide"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": ["source.formatDocument"]
+  },
+  "nix.enableLanguageServer": true,
+  "nix.serverSettings": {
+    "nixd": {
+      "formatting": {
+        "command": ["nixfmt"]
+      }
+    }
+  },
+  "nix.serverPath": "nixd",
+  "editor.tabSize": 3,
+  "editor.insertSpaces": false,
+  "editor.detectIndentation": false
+}
