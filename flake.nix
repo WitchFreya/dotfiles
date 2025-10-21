@@ -51,8 +51,12 @@
         modules = [
           {
             networking.hostName = "Folkvangr";
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.witch = import ./nix/home/folkvangr.nix;
           }
           nixos-wsl.nixosModules.default
+          home-manager.nixosModules.home-manager
           ./nix/system/wsl-nixos.nix
         ];
       };
