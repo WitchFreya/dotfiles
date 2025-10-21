@@ -39,25 +39,29 @@
       darwinConfigurations."1x1-osx" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
+          home-manager.darwinModules.home-manager
+          ./nix/system/nix-darwin.nix
           {
             networking.hostName = "1x1-osx";
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.witch = import ./nix/home/1x1-osx.nix;
           }
-          ./nix/system/nix-darwin.nix
         ];
       };
 
       nixosConfigurations.Folkvangr = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          nixos-wsl.nixosModules.default
+          home-manager.nixosModules.home-manager
+          ./nix/system/wsl-nixos.nix
           {
             networking.hostName = "Folkvangr";
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.witch = import ./nix/home/folkvangr.nix;
           }
-          nixos-wsl.nixosModules.default
-          home-manager.nixosModules.home-manager
-          ./nix/system/wsl-nixos.nix
         ];
       };
     };
