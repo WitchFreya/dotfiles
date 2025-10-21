@@ -11,6 +11,5 @@
     man-pages-posix
     home-manager
   ];
-  documentation.dev.enable = true;
   nix.settings.experimental-features = "nix-command flakes";
 }
