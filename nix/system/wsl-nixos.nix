@@ -2,7 +2,7 @@
 {
   imports = [
     ./openssh.nix
-    ./configuration.nix
+    ./shared.nix
   ];
   system.stateVersion = "24.11";
   wsl.enable = true;

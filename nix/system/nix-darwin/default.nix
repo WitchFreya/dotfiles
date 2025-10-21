@@ -1,7 +1,7 @@
 { lib, self, ... }:
 {
   imports = [
-    ./configuration.nix
+    ../shared.nix
   ];
   nixpkgs.overlays = [ self.inputs.nix4vscode.overlays.forVscode ];
   system.primaryUser = "witch";
