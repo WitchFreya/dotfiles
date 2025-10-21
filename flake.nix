@@ -12,30 +12,13 @@
 
   outputs =
     {
-      nix-darwin,
       nixpkgs,
+      nix-darwin,
       nixos-wsl,
       home-manager,
       ...
     }:
     {
-      homeConfigurations = {
-        "witch@Folkvangr" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          modules = [
-            ./nix/home/common.nix
-            ./nix/home/folkvangr.nix
-          ];
-        };
-
-        "witch@1x1-osx" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
-          modules = [
-            ./nix/home/common.nix
-            ./nix/home/1x1-osx.nix
-          ];
-        };
-      };
       darwinConfigurations."1x1-osx" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
@@ -64,5 +47,16 @@
           }
         ];
       };
+
+      devShells.x86_64-linux.default =
+        let
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        in
+        pkgs.mkShell {
+          packages = with pkgs; [
+            nixfmt-rfc-style
+            nixd
+          ];
+        };
     };
 }
