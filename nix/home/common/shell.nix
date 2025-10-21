@@ -1,5 +1,9 @@
-{ pkgs, ... }:
+{ self, pkgs, ... }:
 {
+  imports = [
+    self.inputs._1password-shell-plugins.hmModules.default
+  ];
+
   home.packages = with pkgs; [
     starship
     zsh
@@ -20,4 +24,5 @@
   };
   programs.starship.enable = true;
   programs.zoxide.enable = true;
+  programs._1password-shell-plugins.enable = true;
 }
