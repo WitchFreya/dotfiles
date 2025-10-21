@@ -24,7 +24,4 @@
   environment.systemPackages = with pkgs; [
     heroku
   ];
-
-  homebrew.casks = [
-  ];
 }
