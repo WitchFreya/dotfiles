@@ -58,7 +58,7 @@
             home-manager.darwinModules.home-manager
             mac-app-util.darwinModules.default
             lix-module.nixosModules.default
-            ./nix/system/nix-darwin.nix
+            ./nix/system/nix-darwin
             {
               home-manager.sharedModules = [
                 mac-app-util.homeManagerModules.default
