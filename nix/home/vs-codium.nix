@@ -6,6 +6,7 @@
     profiles.default = {
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
+      userSettings = builtins.fromJSON (builtins.readFile ../../.vscode/settings.json);
       extensions = pkgs.nix4vscode.forVscode [
         # visuals
         "akamud.vscode-theme-onedark"
@@ -27,12 +28,6 @@
         "jnoortheen.nix-ide"
         "yoavbls.pretty-ts-errors"
       ];
-
-      userSettings = {
-        "workbench.iconTheme" = "material-icon-theme";
-        "editor.fontFamily" = "'FiraCode NFM', Consolas, 'Courier New', monospace";
-        "editor.formatOnSave" = true;
-      };
     };
   };
 }
