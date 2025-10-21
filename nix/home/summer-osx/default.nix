@@ -22,4 +22,10 @@
   home.sessionVariables = {
     GITHUB_TOKEN = "$(cat ${config.home.homeDirectory}/.config/github.pat)";
   };
+
+  programs.gpg.enable = true;
+  services.gpg-agent = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 }
