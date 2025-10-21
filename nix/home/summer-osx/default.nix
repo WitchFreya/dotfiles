@@ -10,15 +10,11 @@
   programs.zsh.shellAliases = {
     upgrade = "sudo darwin-rebuild switch --flake ~/Documents/vcs/dotfiles";
   };
-  programs.ssh =
-    let
-      onePassPath = "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
-      IdentityAgent = ''IdentityAgent "${onePassPath}"'';
-    in
-    {
-      enable = true;
-      extraConfig = IdentityAgent;
-    };
+  programs.ssh = {
+    enable = true;
+    matchBlocks."*".identityAgent =
+      ''"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"'';
+  };
   home.sessionVariables = {
     GITHUB_TOKEN = "$(cat ${config.home.homeDirectory}/.config/github.pat)";
   };
