@@ -6,7 +6,7 @@
 }:
 {
   imports = [
-    (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
+    (modulesPath + "/installer/cd-dvd/installation-cd-graphical-gnome.nix")
     ./configuration.nix
   ];
   environment.systemPackages = with pkgs; [ neovim ];
@@ -63,5 +63,7 @@
     };
   };
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+  };
 }
