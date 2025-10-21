@@ -1,8 +1,9 @@
-{ lib, ... }:
+{ lib, self, ... }:
 {
   imports = [
     ./configuration.nix
   ];
+  nixpkgs.overlays = [ self.inputs.nix-vscode-extensions.overlays.default ];
   system.primaryUser = "witch";
   system.stateVersion = 6;
   # allow sudo auth with touch id

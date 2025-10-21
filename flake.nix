@@ -9,8 +9,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     mac-app-util.url = "github:hraban/mac-app-util";
-    nix4vscode = {
-      url = "github:nix-community/nix4vscode";
+    nix-vscode-extensions = {
+      url = "github:nix-community/nix-vscode-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
@@ -22,12 +22,12 @@
 
   outputs =
     {
+      self,
       nixpkgs,
       nix-darwin,
       nixos-wsl,
       home-manager,
       mac-app-util,
-      nix4vscode,
       flake-utils,
       lix-module,
       ...
@@ -35,13 +35,13 @@
     {
       darwinConfigurations."1x1-osx" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
+        specialArgs = { inherit self; };
         modules = [
           home-manager.darwinModules.home-manager
           mac-app-util.darwinModules.default
           lix-module.nixosModules.default
           ./nix/system/nix-darwin.nix
           {
-            nixpkgs.overlays = [ nix4vscode.overlays.default ];
             home-manager.sharedModules = [
               mac-app-util.homeManagerModules.default
             ];
@@ -51,6 +51,7 @@
             home-manager.users.witch = import ./nix/home/1x1-osx.nix;
           }
         ];
+
       };
 
       nixosConfigurations = {
