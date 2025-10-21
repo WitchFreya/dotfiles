@@ -63,6 +63,7 @@
       nixosConfigurations = {
         Folkvangr = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = { inherit self; };
           modules = [
             nixos-wsl.nixosModules.default
             home-manager.nixosModules.home-manager
