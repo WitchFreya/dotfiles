@@ -57,7 +57,16 @@
     {
       darwinConfigurations."1x1-osx" = darwinSystem "witch" "1x1-osx";
 
-      darwinConfigurations.summer-osx = darwinSystem "witch" "summer-osx";
+      darwinConfigurations.summer-osx = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { inherit self; };
+        modules = [
+          home-manager.darwinModules.home-manager
+          mac-app-util.darwinModules.default
+          ./nix/hosts/common
+          ./nix/hosts/summer-osx
+        ];
+      };
 
       nixosConfigurations = {
         Folkvangr = nixpkgs.lib.nixosSystem {
