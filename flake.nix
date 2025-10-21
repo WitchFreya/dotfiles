@@ -14,6 +14,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/2.93.3-1.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -25,6 +29,7 @@
       mac-app-util,
       nix4vscode,
       flake-utils,
+      lix-module,
       ...
     }:
     {
@@ -33,6 +38,7 @@
         modules = [
           home-manager.darwinModules.home-manager
           mac-app-util.darwinModules.default
+          lix-module.nixosModules.default
           ./nix/system/nix-darwin.nix
           {
             nixpkgs.overlays = [ nix4vscode.overlays.default ];
@@ -66,6 +72,9 @@
         liveIso = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
+            {
+              networking.hostName = "wolfbox";
+            }
             (
               { pkgs, modulesPath, ... }:
               {
@@ -76,7 +85,6 @@
                 users.users.root.openssh.authorizedKeys.keys = [
                   "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFPmZTMA6pUYhm8RxKRF6x7QMVGcueMnTrdOn1btnkRd"
                 ];
-                networking.hostName = "wolfbox";
               }
             )
           ];
