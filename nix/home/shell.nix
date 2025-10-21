@@ -10,6 +10,9 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
+    shellAliases = {
+      cat = "bat";
+    };
   };
   programs.zsh.oh-my-zsh = {
     enable = true;
