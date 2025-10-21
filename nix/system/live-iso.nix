@@ -43,12 +43,14 @@
 
   users = {
     mutableUsers = false;
-    users.root = {
-      password = "nixos";
+    users.witch = {
+      group = "witch";
+      isNormalUser = true;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFPmZTMA6pUYhm8RxKRF6x7QMVGcueMnTrdOn1btnkRd"
       ];
     };
+    groups.witch = { };
   };
 
   systemd = {
@@ -60,4 +62,6 @@
       hybrid-sleep.enable = false;
     };
   };
+
+  networking.networkmanager.enable = true;
 }
