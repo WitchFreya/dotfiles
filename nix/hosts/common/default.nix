@@ -30,6 +30,7 @@
   home-manager.useUserPackages = true;
   home-manager.users."${config.system.primaryUser or config.wsl.defaultUser}" =
     import ../../home/${config.networking.hostName};
+  home-manager.extraSpecialArgs = { inherit self; };
   home-manager.sharedModules =
     if pkgs.stdenv.isDarwin then
       [

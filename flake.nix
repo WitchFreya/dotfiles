@@ -19,6 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     flake-utils.url = "github:numtide/flake-utils";
+    _1password-shell-plugins.url = "github:1Password/shell-plugins";
   };
 
   outputs =
