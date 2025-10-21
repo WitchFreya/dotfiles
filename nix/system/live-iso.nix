@@ -68,4 +68,7 @@
   networking.networkmanager = {
     enable = true;
   };
+
+  nix.gc.dates = "2w";
+
 }
