@@ -60,18 +60,7 @@
         ];
       };
 
-      devShells.x86_64-linux.default =
-        let
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-        in
-        pkgs.mkShell {
-          packages = with pkgs; [
-            nixfmt-rfc-style
-            nixd
-          ];
-        };
-
-      devShells.aarch64-darwin.default =
+      devShells."${builtins.currentSystem}".default =
         let
           pkgs = nixpkgs.legacyPackages.aarch64-darwin;
         in
