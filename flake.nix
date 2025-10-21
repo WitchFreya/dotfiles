@@ -51,7 +51,26 @@
             home-manager.users.witch = import ./nix/home/1x1-osx.nix;
           }
         ];
+      };
 
+      darwinConfigurations.summer-osx = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = { inherit self; };
+        modules = [
+          home-manager.darwinModules.home-manager
+          mac-app-util.darwinModules.default
+          lix-module.nixosModules.default
+          ./nix/system/nix-darwin.nix
+          {
+            home-manager.sharedModules = [
+              mac-app-util.homeManagerModules.default
+            ];
+            networking.hostName = "summer-osx";
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.witch = import ./nix/home/summer-osx.nix;
+          }
+        ];
       };
 
       nixosConfigurations = {
