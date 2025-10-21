@@ -53,7 +53,7 @@
             networking.hostName = "Folkvangr";
           }
           nixos-wsl.nixosModules.default
-          ./nix/system/wsl-nixos.nix.nix
+          ./nix/system/wsl-nixos.nix
         ];
       };
     };
