@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
   imports = [
     ./aws-cli.nix
@@ -19,4 +19,7 @@
       enable = true;
       extraConfig = IdentityAgent;
     };
+  home.sessionVariables = {
+    GITHUB_TOKEN = "$(cat ${config.home.homeDirectory}/.config/github.pat)";
+  };
 }

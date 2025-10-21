@@ -20,6 +20,7 @@
     };
     flake-utils.url = "github:numtide/flake-utils";
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
+    opnix.url = "github:brizzbuzz/opnix";
   };
 
   outputs =
@@ -31,6 +32,7 @@
       home-manager,
       mac-app-util,
       flake-utils,
+      opnix,
       ...
     }:
     {
@@ -40,6 +42,7 @@
         modules = [
           home-manager.darwinModules.home-manager
           mac-app-util.darwinModules.default
+          opnix.darwinModules.default
           ./nix/hosts/common
           ./nix/hosts/1x1-osx
         ];
@@ -51,6 +54,7 @@
         modules = [
           home-manager.darwinModules.home-manager
           mac-app-util.darwinModules.default
+          opnix.darwinModules.default
           ./nix/hosts/common
           ./nix/hosts/summer-osx
         ];
@@ -62,6 +66,7 @@
           modules = [
             nixos-wsl.nixosModules.default
             home-manager.nixosModules.home-manager
+            opnix.nixosModules.default
             ./nix/hosts/common
             ./nix/hosts/folkvangr
           ];
