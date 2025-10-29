@@ -30,6 +30,10 @@ in
     postgresql_13
   ];
 
+  homebrew.casks = [
+    "dbeaver-community"
+  ];
+
   services.onepassword-secrets = {
     enable = true;
     groupId = 601;
