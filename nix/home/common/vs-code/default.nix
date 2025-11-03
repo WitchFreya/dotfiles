@@ -48,6 +48,7 @@
             "jnoortheen.nix-ide"
             "yzhang.markdown-all-in-one"
             "meganrogge.template-string-converter"
+            "bradlc.vscode-tailwindcss"
           ];
         in
         pkgs.nix4vscode.forVscode unfreeExtensions ++ pkgs.nix4vscode.forOpenVsx freeExtensions;
