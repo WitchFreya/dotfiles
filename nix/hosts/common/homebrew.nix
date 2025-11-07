@@ -12,6 +12,7 @@
       "bettertouchtool"
       "1password"
       "todoist-app"
+      "keymapp"
     ];
   };
 }
