@@ -23,7 +23,7 @@
           if pkgs.stdenv.isDarwin then
             "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
           else
-            "/mnt/c/Users/freya/AppData/Local/1Password/app/8/op-ssh-sign-wsl";
+            "/mnt/c/Users/freya/AppData/Local/Microsoft/WindowsApps/op-ssh-sign-wsl.exe";
         editor = if config.programs.vscode.package == pkgs.vscodium then "codium" else "code";
       in
       {
