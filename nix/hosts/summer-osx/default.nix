@@ -27,7 +27,7 @@ in
   environment.systemPackages = with pkgs; [
     heroku
     netlify-cli
-    postgresql_13
+    postgresql_17
   ];
 
   homebrew.casks = [
