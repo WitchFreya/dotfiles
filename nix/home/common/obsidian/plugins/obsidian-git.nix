@@ -1,13 +1,13 @@
 { pkgs, ... }:
 pkgs.stdenv.mkDerivation (finalAttrs: {
   pname = "obsidian.plugins.obsidian-git";
-  version = "2.35.1";
+  version = "2.35.2";
 
   src = pkgs.fetchFromGitHub {
     owner = "Vinzent03";
     repo = "obsidian-git";
     rev = finalAttrs.version;
-    hash = "sha256-ExjfsN1UWPRSEiFt4YCiO2PDJuNnS0koVtDtRXgR5lc=";
+    hash = "sha256-A3s9+fhHRc6YC/YObJWqIG8NfA638gMkmjQtoOifO8s=";
   };
 
   pnpmDeps = pkgs.pnpm.fetchDeps {
