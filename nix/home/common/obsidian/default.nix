@@ -27,9 +27,8 @@
         "workspaces"
       ];
       settings.communityPlugins = [
-        {
-          pkg = pkgs.callPackage ./plugins/obsidian-git.nix { };
-        }
+        { pkg = pkgs.callPackage ./plugins/obsidian-git.nix { }; }
+        { pkg = pkgs.callPackage ./plugins/relay.nix { }; }
       ];
     };
   };
