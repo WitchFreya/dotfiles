@@ -15,3 +15,7 @@
 ### Docker
 
 Docker really doesn't like to behave with homebrew, so if you need stuff with it, install it using the [Mac installer](https://docs.docker.com/desktop/setup/install/mac-install/).
+
+### OPNix
+
+For 1password tokens to be available, you'll need to configure a service account. Follow the [1password developer instructions](https://developer.1password.com/docs/service-accounts/manage-service-accounts) and then run `sudo opnix token set` with the value.

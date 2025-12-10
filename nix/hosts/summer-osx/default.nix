@@ -40,7 +40,7 @@ in
     users = [ primaryUser ];
     secrets = {
       githubPackagesPAT = {
-        reference = "op://itnk7smgjjct3knlpk44qvhgmm/fh2hdwzebf2tpkrlmtfcbgyive/credential";
+        reference = "op://Work Secrets/GitHub Packages PAT/credential";
         path = "/Users/${primaryUser}/.config/github.pat";
         owner = primaryUser;
         mode = "0600";
