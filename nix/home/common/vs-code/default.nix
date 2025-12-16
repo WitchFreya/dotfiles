@@ -17,7 +17,6 @@
           freeExtensions = [
             # visuals
             "pkief.material-icon-theme"
-            "akamud.vscode-theme-onedark"
 
             # basic features
             "mkhl.direnv"
@@ -39,7 +38,6 @@
             # version control
             "fill-labs.dependi"
             "eamodio.gitlens"
-            "github.vscode-pull-request-github"
 
             # language support
             "tamasfe.even-better-toml"
