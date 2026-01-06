@@ -31,7 +31,7 @@
         init.defaultBranch = "main";
         core.editor = "${editor} --wait";
         pull.rebase = true;
-        gpg.ssh.allowedSignersFile = builtins.toString signersFile;
+        gpg.ssh.allowedSignersFile = toString signersFile;
         gpg.ssh.program = onePassSshPath;
       };
   };
