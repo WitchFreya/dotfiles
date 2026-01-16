@@ -1,12 +1,12 @@
 { pkgs, ... }:
 pkgs.buildNpmPackage (finalAttrs: {
   pname = "obsidian.plugins.relay";
-  version = "0.7.3";
+  version = "0.7.4";
 
   src = pkgs.fetchgit {
     name = finalAttrs.pname;
     url = "https://github.com/No-Instructions/Relay.git";
-    hash = "sha256-QIr22kltP9/ibFaW2FTQNNxRSPpoy7ObwBF7QwaswGA=";
+    hash = "sha256-eNj85VgEKofLT/0sQdnMNShCdZCu2+qnxPXHs/0QDtg=";
     leaveDotGit = true;
     rev = finalAttrs.version;
   };
