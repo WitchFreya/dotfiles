@@ -20,7 +20,7 @@ in
     man-pages
     man-pages-posix
     home-manager
-    nixfmt-rfc-style
+    nixfmt
     nixd
     direnv
   ];
