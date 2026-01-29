@@ -76,5 +76,6 @@
   "editor.detectIndentation": false,
   "chat.agent.enabled": false,
   "workbench.startupEditor": "none",
-  "errorLens.excludeByMessage": [{ "regex": "\".*\": Unknown word" }]
+  "errorLens.excludeByMessage": [{ "regex": "\".*\": Unknown word" }],
+  "terminal.integrated.initialHint": false
 }
