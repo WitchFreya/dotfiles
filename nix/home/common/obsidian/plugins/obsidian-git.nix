@@ -1,19 +1,19 @@
 { pkgs, ... }:
 pkgs.stdenv.mkDerivation (finalAttrs: {
   pname = "obsidian.plugins.obsidian-git";
-  version = "2.36.1";
+  version = "2.37.0";
 
   src = pkgs.fetchFromGitHub {
     owner = "Vinzent03";
     repo = "obsidian-git";
     rev = finalAttrs.version;
-    hash = "sha256-NQs2ZpkstVJYogucBvP3DaYfJ1dFKr3zxNakX0IpQAE=";
+    hash = "sha256-vwLPjDj64DQYx4HsVmsB2OWdFNF8oF/AM+topawq3IM=";
   };
 
   pnpmDeps = pkgs.fetchPnpmDeps {
     inherit (finalAttrs) pname version src;
     fetcherVersion = 2;
-    hash = "sha256-pEWuqWLfqCYOfVNgiqayGUNAKC2VkfOfu7yXfqqhnl4=";
+    hash = "sha256-LlUbxB2uTdZcu89Ka4aV+HDftOT1eB3tD+F1rFPDPtw=";
   };
 
   nativeBuildInputs = with pkgs; [
