@@ -6,7 +6,7 @@ pkgs.buildNpmPackage (finalAttrs: {
   src = pkgs.fetchgit {
     name = finalAttrs.pname;
     url = "https://github.com/No-Instructions/Relay.git";
-    hash = "sha256-hhATlETqfU0+I2qufHG9LoD5IBJOdQOkazG0HldxQbo=";
+    hash = "sha256-KTEB2OsYhlrbuqIckmdjuVZ0TKdXLlPRgTSf51Eq2zk=";
     leaveDotGit = true;
     rev = finalAttrs.version;
   };
