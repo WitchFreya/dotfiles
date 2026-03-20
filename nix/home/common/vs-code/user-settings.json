@@ -77,5 +77,7 @@
   "chat.agent.enabled": false,
   "workbench.startupEditor": "none",
   "errorLens.excludeByMessage": [{ "regex": "\".*\": Unknown word" }],
-  "terminal.integrated.initialHint": false
+  "terminal.integrated.initialHint": false,
+  "terminal.integrated.fontLigatures.enabled": true,
+  "editor.fontLigatures": true
 }
