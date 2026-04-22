@@ -5,6 +5,7 @@ in
 {
   imports = [
     ../common/homebrew.nix
+    ../common/ai-slop.nix
   ];
   networking.hostName = "summer-osx";
   nixpkgs.overlays = [ self.inputs.nix4vscode.overlays.forVscode ];
