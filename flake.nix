@@ -44,6 +44,7 @@
           mac-app-util.darwinModules.default
           opnix.darwinModules.default
           ./nix/hosts/common
+          ./nix/hosts/common/darwin.nix
           ./nix/hosts/1x1-osx
         ];
       };
@@ -56,6 +57,7 @@
           mac-app-util.darwinModules.default
           opnix.darwinModules.default
           ./nix/hosts/common
+          ./nix/hosts/common/darwin.nix
           ./nix/hosts/summer-osx
         ];
       };
