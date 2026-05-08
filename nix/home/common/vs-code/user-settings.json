@@ -16,6 +16,7 @@
 
   "terminal.integrated.initialHint": false,
   "terminal.integrated.fontLigatures.enabled": true,
+  "terminal.integrated.enablePersistentSessions": false,
 
   "extensions.autoUpdate": false,
   "extensions.supportUntrustedPublishers": true,
