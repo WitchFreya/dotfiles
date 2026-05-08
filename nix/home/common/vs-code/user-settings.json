@@ -1,26 +1,59 @@
 {
   "$schema": "vscode://schemas/settings/user",
   "workbench.iconTheme": "vs-seti",
+  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.startupEditor": "none",
+
+  "editor.fontLigatures": true,
   "editor.fontFamily": "'FiraCode Nerd Font Mono', Consolas, 'Courier New', monospace",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": ["source.formatDocument"],
   "editor.guides.bracketPairs": "active",
   "editor.inlayHints.enabled": "offUnlessPressed",
+  "editor.tabSize": 3,
+  "editor.insertSpaces": false,
+  "editor.detectIndentation": true,
+
+  "terminal.integrated.initialHint": false,
+  "terminal.integrated.fontLigatures.enabled": true,
+
   "extensions.autoUpdate": false,
   "extensions.supportUntrustedPublishers": true,
-  "workbench.colorTheme": "Default Dark Modern",
+
   "terminal.integrated.defaultProfile.osx": "zsh",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "terminal.integrated.defaultProfile.windows": "PowerShell",
+
+  "git.terminalAuthentication": false,
+  "git.terminalGitEditor": false,
+
+  "gitlens.rebaseEditor.ordering": "asc",
+  "gitlens.ai.enabled": false,
+
+  "nix.enableLanguageServer": true,
+  "nix.serverSettings": {
+    "nixd": {
+      "formatting": {
+        "command": ["nixfmt"]
+      }
+    }
+  },
+  "nix.serverPath": "nixd",
+  "errorLens.excludeByMessage": [{ "regex": "\".*\": Unknown word" }],
   "cSpell.language": "en,en-US",
   "githubPullRequests.terminalLinksHandler": "github",
-  "gitlens.rebaseEditor.ordering": "asc",
+
+  "chat.agent.enabled": false,
+  "chat.autopilot.enabled": false,
+
   "js.inlayHints.functionLikeReturnTypes.enabled": true,
   "js.inlayHints.parameterNames.enabled": "all",
   "js.updateImportsOnFileMove.enabled": "prompt",
+
   "ts.inlayHints.functionLikeReturnTypes.enabled": true,
   "ts.inlayHints.parameterNames.enabled": "all",
   "ts.updateImportsOnFileMove.enabled": "prompt",
+
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": [
@@ -63,24 +96,5 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": ["source.formatDocument"]
-  },
-  "nix.enableLanguageServer": true,
-  "nix.serverSettings": {
-    "nixd": {
-      "formatting": {
-        "command": ["nixfmt"]
-      }
-    }
-  },
-  "nix.serverPath": "nixd",
-  "editor.tabSize": 3,
-  "editor.insertSpaces": false,
-  "editor.detectIndentation": false,
-  "chat.agent.enabled": false,
-  "workbench.startupEditor": "none",
-  "errorLens.excludeByMessage": [{ "regex": "\".*\": Unknown word" }],
-  "terminal.integrated.initialHint": false,
-  "terminal.integrated.fontLigatures.enabled": true,
-  "editor.fontLigatures": true,
-  "chat.autopilot.enabled": false
+  }
 }
