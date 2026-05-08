@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.sessionVariables.EDITOR = "codium";
-  programs.vscode = {
+  programs.vscodium = {
     enable = true;
     package = pkgs.vscodium;
     mutableExtensionsDir = false;

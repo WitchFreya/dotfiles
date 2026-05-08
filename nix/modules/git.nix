@@ -24,7 +24,7 @@
             "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
           else
             "/mnt/c/Users/freya/AppData/Local/Microsoft/WindowsApps/op-ssh-sign-wsl.exe";
-        editor = if config.programs.vscode.package == pkgs.vscodium then "codium" else "code";
+        editor = if config.programs.vscodium.enable == true then "codium" else "code";
       in
       {
         user.name = "Freya Gaynor";
