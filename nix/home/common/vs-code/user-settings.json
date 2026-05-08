@@ -15,10 +15,12 @@
   "cSpell.language": "en,en-US",
   "githubPullRequests.terminalLinksHandler": "github",
   "gitlens.rebaseEditor.ordering": "asc",
-  "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "javascript.inlayHints.parameterNames.enabled": "all",
-  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "typescript.inlayHints.parameterNames.enabled": "all",
+  "js.inlayHints.functionLikeReturnTypes.enabled": true,
+  "js.inlayHints.parameterNames.enabled": "all",
+  "js.updateImportsOnFileMove.enabled": "prompt",
+  "ts.inlayHints.functionLikeReturnTypes.enabled": true,
+  "ts.inlayHints.parameterNames.enabled": "all",
+  "ts.updateImportsOnFileMove.enabled": "prompt",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": [
@@ -33,7 +35,7 @@
       "source.fixAll.eslint"
     ]
   },
-  "javascript.updateImportsOnFileMove.enabled": "prompt",
+
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.codeActionsOnSave": [
@@ -79,5 +81,6 @@
   "errorLens.excludeByMessage": [{ "regex": "\".*\": Unknown word" }],
   "terminal.integrated.initialHint": false,
   "terminal.integrated.fontLigatures.enabled": true,
-  "editor.fontLigatures": true
+  "editor.fontLigatures": true,
+  "chat.autopilot.enabled": false
 }
