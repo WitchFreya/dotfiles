@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   home.sessionVariables.EDITOR = "codium";
   programs.vscodium = {
@@ -53,4 +53,13 @@
         pkgs.nix4vscode.forVscode unfreeExtensions ++ pkgs.nix4vscode.forOpenVsx freeExtensions;
     };
   };
+
+  # some ephemeral settings change while working in VS Code; this allows them to modify in place and be rewritten when upgrading
+  home.activation.makeVSCodeSettingsMutable = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    settings="$HOME/Library/Application Support/VSCodium/User/settings.json"
+    if [ -L "$settings" ]; then
+      cp --remove-destination "$(readlink "$settings")" "$settings"
+      chmod u+w "$settings"
+    fi
+  '';
 }
