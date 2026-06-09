@@ -1,4 +1,15 @@
 { pkgs, ... }:
+let
+  # Workaround for https://github.com/NixOS/nixpkgs/issues/525627
+  pnpmPatched = pkgs.pnpm.overrideAttrs (old: {
+    postPatch = (old.postPatch or "") + ''
+      substituteInPlace dist/pnpm.mjs \
+        --replace-fail \
+          'resourceLimits: this._workerResourceLimits' \
+          'resourceLimits: this._workerResourceLimits, trackUnmanagedFds: false'
+    '';
+  });
+in
 pkgs.stdenv.mkDerivation (finalAttrs: {
   pname = "obsidian.plugins.obsidian-git";
   version = "2.38.3";
@@ -12,14 +23,15 @@ pkgs.stdenv.mkDerivation (finalAttrs: {
 
   pnpmDeps = pkgs.fetchPnpmDeps {
     inherit (finalAttrs) pname version src;
-    fetcherVersion = 2;
-    hash = "sha256-dMl6SXEuZlEIm1jOR6gI5hBBk236FItxga2cx2d8D0g=";
+    pnpm = pnpmPatched;
+    fetcherVersion = 3;
+    hash = "sha256-h1SZZF3GZaNniXptxzKeqP8ROvd17bBTjZQ9CHna5HY=";
   };
 
-  nativeBuildInputs = with pkgs; [
-    nodejs
-    pnpm
-    pnpmConfigHook
+  nativeBuildInputs = [
+    pkgs.nodejs
+    pnpmPatched
+    pkgs.pnpmConfigHook
   ];
 
   buildPhase = ''
