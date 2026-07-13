@@ -2,6 +2,7 @@
 {
   imports = [
     ./aws-cli.nix
+    ./claude-code.nix
     ./vs-code.nix
     ../common
     ../common/vs-code
