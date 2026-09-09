@@ -12,20 +12,20 @@ let
 in
 pkgs.stdenv.mkDerivation (finalAttrs: {
   pname = "obsidian.plugins.obsidian-git";
-  version = "2.38.3";
+  version = "2.39.0";
 
   src = pkgs.fetchFromGitHub {
     owner = "Vinzent03";
     repo = "obsidian-git";
     rev = finalAttrs.version;
-    hash = "sha256-LcFIpQHOLjCY4L2vCYBjBN/73Bfg5Wa+tXoVmcBMrbY=";
+    hash = "sha256-xXfHEyrh+w35/ViZJbpZTA37AzJJjv941fkZzNruvE4=";
   };
 
   pnpmDeps = pkgs.fetchPnpmDeps {
     inherit (finalAttrs) pname version src;
     pnpm = pnpmPatched;
-    fetcherVersion = 3;
-    hash = "sha256-h1SZZF3GZaNniXptxzKeqP8ROvd17bBTjZQ9CHna5HY=";
+    fetcherVersion = 4;
+    hash = "sha256-EyL2qKNyhELaPIHPhVo96bo3tUIkNZ/Xo3/p8ppB5xE=";
   };
 
   nativeBuildInputs = [
