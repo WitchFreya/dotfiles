@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     ./aws-cli.nix
@@ -21,6 +21,8 @@
   home.sessionVariables = {
     GITHUB_TOKEN = "$(cat ${config.home.homeDirectory}/.config/github.pat)";
   };
+
+  programs._1password-shell-plugins.plugins = [ pkgs.circleci-cli ];
 
   programs.gpg.enable = true;
   services.gpg-agent = {
