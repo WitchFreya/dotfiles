@@ -20,7 +20,7 @@
           ${email} namespaces="git" ${key}
         '';
         onePassSshPath =
-          if pkgs.stdenv.isDarwin then
+          if pkgs.stdenv.hostPlatform.isDarwin then
             "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
           else
             "/mnt/c/Users/freya/AppData/Local/Microsoft/WindowsApps/op-ssh-sign-wsl.exe";

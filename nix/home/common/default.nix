@@ -9,7 +9,7 @@
   ];
   home =
     let
-      usersDir = if pkgs.stdenv.isDarwin then /Users else /home;
+      usersDir = if pkgs.stdenv.hostPlatform.isDarwin then /Users else /home;
     in
     {
       username = "witch";

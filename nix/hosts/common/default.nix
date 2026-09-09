@@ -34,7 +34,7 @@ in
   home-manager.users."${primaryUser}" = import ../../home/${config.networking.hostName};
   home-manager.extraSpecialArgs = { inherit self; };
   home-manager.sharedModules =
-    if pkgs.stdenv.isDarwin then
+    if pkgs.stdenv.hostPlatform.isDarwin then
       [
         self.inputs.mac-app-util.homeManagerModules.default
       ]
