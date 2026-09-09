@@ -18,7 +18,9 @@
   "terminal.integrated.fontLigatures.enabled": true,
   "terminal.integrated.enablePersistentSessions": false,
 
+  "update.mode": "none",
   "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false,
   "extensions.supportUntrustedPublishers": true,
 
   "terminal.integrated.defaultProfile.osx": "zsh",

@@ -6,9 +6,6 @@
     package = pkgs.vscodium;
     mutableExtensionsDir = false;
     profiles.default = {
-      enableUpdateCheck = false;
-      enableExtensionUpdateCheck = false;
-      userSettings = builtins.fromJSON (builtins.readFile ./user-settings.json);
       extensions =
         let
           unfreeExtensions = [
@@ -54,11 +51,12 @@
     };
   };
 
-  # some ephemeral settings change while working in VS Code; this allows them to modify in place and be rewritten when upgrading
-  home.activation.makeVSCodeSettingsMutable = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  # Insert only if it doesn't exist, that way clobbering with transient settings from extensions isn't a problem.
+  home.activation.seedVSCodeSettings = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     settings="$HOME/Library/Application Support/VSCodium/User/settings.json"
-    if [ -L "$settings" ]; then
-      cp --remove-destination "$(readlink "$settings")" "$settings"
+    if [ ! -e "$settings" ]; then
+      mkdir -p "$(dirname "$settings")"
+      cp ${./user-settings.json} "$settings"
       chmod u+w "$settings"
     fi
   '';
