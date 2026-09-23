@@ -10,6 +10,7 @@ let
 in
 {
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [ self.inputs.obsidian-extensions.overlays.default ];
   nix.settings.experimental-features = "nix-command flakes";
   environment.systemPackages = with pkgs; [
     wget

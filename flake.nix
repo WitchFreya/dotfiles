@@ -24,6 +24,10 @@
     flake-utils.url = "github:numtide/flake-utils";
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
     opnix.url = "github:brizzbuzz/opnix";
+    obsidian-extensions = {
+      url = "github:karaolidis/nix-obsidian-extensions";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -36,6 +40,7 @@
       mac-app-util,
       flake-utils,
       opnix,
+      obsidian-extensions,
       ...
     }:
     {

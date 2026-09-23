@@ -2,10 +2,8 @@
 {
   programs.obsidian = {
     enable = true;
-    vaults."obsidian" = {
-      enable = true;
-      target = "vcs/obsidian";
-      settings.corePlugins = [
+    defaultSettings = {
+      corePlugins = [
         "backlink"
         "bookmarks"
         "canvas"
@@ -26,10 +24,15 @@
         "word-count"
         "workspaces"
       ];
-      settings.communityPlugins = [
-        { pkg = pkgs.callPackage ./plugins/obsidian-git.nix { }; }
-        { pkg = pkgs.callPackage ./plugins/relay.nix { }; }
+
+      communityPlugins = with pkgs.obsidianPlugins; [
+        obsidian-git
+        system3-relay
       ];
+    };
+    vaults."obsidian" = {
+      enable = true;
+      target = "vcs/obsidian";
     };
   };
 }

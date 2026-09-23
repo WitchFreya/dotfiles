@@ -38,6 +38,17 @@
     "nixd": {
       "formatting": {
         "command": ["nixfmt"]
+      },
+      "nixpkgs": {
+        "expr": "(builtins.getFlake \"@flakePath@\").darwinConfigurations.\"@hostName@\".pkgs"
+      },
+      "options": {
+        "nix-darwin": {
+          "expr": "(builtins.getFlake \"@flakePath@\").darwinConfigurations.\"@hostName@\".options"
+        },
+        "home-manager": {
+          "expr": "(builtins.getFlake \"@flakePath@\").darwinConfigurations.\"@hostName@\".options.home-manager.users.type.getSubOptions []"
+        }
       }
     }
   },

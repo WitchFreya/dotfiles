@@ -1,4 +1,19 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  osConfig,
+  ...
+}:
+let
+  flakePath = "${config.home.homeDirectory}/Documents/vcs/dotfiles";
+
+  userSettings = pkgs.writeText "vscodium-user-settings.json" (
+    builtins.replaceStrings [ "@flakePath@" "@hostName@" ] [ flakePath osConfig.networking.hostName ] (
+      builtins.readFile ./user-settings.json
+    )
+  );
+in
 {
   home.sessionVariables.EDITOR = "codium";
   programs.vscodium = {
@@ -56,7 +71,7 @@
     settings="$HOME/Library/Application Support/VSCodium/User/settings.json"
     if [ ! -e "$settings" ]; then
       mkdir -p "$(dirname "$settings")"
-      cp ${./user-settings.json} "$settings"
+      cp ${userSettings} "$settings"
       chmod u+w "$settings"
     fi
   '';
