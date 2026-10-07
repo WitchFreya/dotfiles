@@ -1,3 +1,4 @@
+# Claude code was made a requirement for Summer so this endeavors to keep it as far from my own machines as possible.
 { ... }:
 {
   # Claude Code runs each command in a fresh non-interactive `zsh -c` (sources
