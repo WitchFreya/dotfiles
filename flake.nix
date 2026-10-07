@@ -28,6 +28,7 @@
       url = "github:karaolidis/nix-obsidian-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    claude-code.url = "github:sadjow/claude-code-nix";
   };
 
   outputs =
@@ -41,6 +42,7 @@
       flake-utils,
       opnix,
       obsidian-extensions,
+      claude-code,
       ...
     }:
     {

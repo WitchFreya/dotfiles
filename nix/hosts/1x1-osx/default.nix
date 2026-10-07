@@ -4,7 +4,10 @@
     ../common/homebrew.nix
   ];
   networking.hostName = "1x1-osx";
-  nixpkgs.overlays = [ self.inputs.nix4vscode.overlays.forVscode ];
+  nixpkgs.overlays = [
+    self.inputs.nix4vscode.overlays.forVscode
+    self.inputs.claude-code.overlays.default
+  ];
   system.primaryUser = "witch";
   system.stateVersion = 6;
   # allow sudo auth with touch id

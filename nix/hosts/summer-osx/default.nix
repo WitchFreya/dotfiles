@@ -7,7 +7,10 @@ in
     ../common/homebrew.nix
   ];
   networking.hostName = "summer-osx";
-  nixpkgs.overlays = [ self.inputs.nix4vscode.overlays.forVscode ];
+  nixpkgs.overlays = [
+    self.inputs.nix4vscode.overlays.forVscode
+    self.inputs.claude-code.overlays.default
+  ];
   system.primaryUser = primaryUser;
   system.stateVersion = 6;
   # allow sudo auth with touch id
@@ -32,6 +35,7 @@ in
 
   homebrew.casks = [
     "dbeaver-community"
+    "claude"
   ];
 
   services.onepassword-secrets = {
