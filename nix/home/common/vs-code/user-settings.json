@@ -1,7 +1,7 @@
 {
   "$schema": "vscode://schemas/settings/user",
   "workbench.iconTheme": "vs-seti",
-  "workbench.colorTheme": "Default Dark Modern",
+  "workbench.colorTheme": "Dark Modern",
   "workbench.startupEditor": "none",
 
   "editor.fontLigatures": true,
@@ -19,7 +19,7 @@
   "terminal.integrated.enablePersistentSessions": false,
 
   "update.mode": "none",
-  "extensions.autoUpdate": false,
+  "extensions.autoUpdate": "off",
   "extensions.autoCheckUpdates": false,
   "extensions.supportUntrustedPublishers": true,
 
