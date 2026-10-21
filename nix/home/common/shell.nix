@@ -20,7 +20,10 @@
     enableCompletion = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-    sessionVariables = config.home.sessionVariables;
+    sessionVariables = config.home.sessionVariables // {
+      # https://donottrack.sh/
+      DO_NOT_TRACK = 1;
+    };
     shellAliases = {
       cat = "bat";
     };
