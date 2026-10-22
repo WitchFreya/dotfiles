@@ -221,11 +221,6 @@ in
   programs.zsh.envExtra = ''
     if [[ -n "$CLAUDECODE" ]]; then
       eval "$(direnv export zsh 2>/dev/null)"
-      # 1Password shell plugin CLIs wait on an approval prompt that's easy to miss on multiple monitors.
-      op() {
-        [[ $1 == plugin ]] && /usr/bin/afplay /System/Library/Sounds/Glass.aiff &!
-        command op "$@"
-      }
     fi
   '';
 
