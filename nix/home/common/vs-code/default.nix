@@ -9,13 +9,16 @@ let
   flakePath = "${config.home.homeDirectory}/Documents/vcs/dotfiles";
 
   userSettings = pkgs.writeText "vscodium-user-settings.json" (
-    builtins.replaceStrings [ "@flakePath@" "@hostName@" ] [ flakePath osConfig.networking.hostName ] (
-      builtins.readFile ./user-settings.json
-    )
+    builtins.replaceStrings
+      [ "@flakePath@" "@hostName@" "@ripgrep@" ]
+      [ flakePath osConfig.networking.hostName "${config.home.profileDirectory}/bin/rg" ]
+      (builtins.readFile ./user-settings.json)
   );
 in
 {
   home.sessionVariables.EDITOR = "codium";
+  # Todo Tree can't find VSCodium's bundled ripgrep, which moved to @vscode/ripgrep-universal.
+  home.packages = [ pkgs.ripgrep ];
   programs.vscodium = {
     enable = true;
     package = pkgs.vscodium;

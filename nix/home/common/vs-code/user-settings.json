@@ -33,6 +33,8 @@
   "gitlens.rebaseEditor.ordering": "asc",
   "gitlens.ai.enabled": false,
 
+  "todo-tree.ripgrep.ripgrep": "@ripgrep@",
+
   "nix.enableLanguageServer": true,
   "nix.serverSettings": {
     "nixd": {
