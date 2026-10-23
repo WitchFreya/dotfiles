@@ -236,6 +236,29 @@ in
       deniedMcpServers = map (connector: { serverName = "claude.ai ${connector}"; }) deniedConnectors;
       # Prevents duplicate tool listings when these also appear in .mcp.json.
       disabledMcpjsonServers = lib.attrNames servers;
+      hooks = {
+        PreToolUse = [
+          {
+            matcher = "Bash";
+            hooks = [
+              {
+                type = "command";
+                command = "bash ${./claude-code-hooks/guard-bash.sh}";
+              }
+            ];
+          }
+        ];
+        SessionStart = [
+          {
+            hooks = [
+              {
+                type = "command";
+                command = "bash ${./claude-code-hooks/expire-memories.sh}";
+              }
+            ];
+          }
+        ];
+      };
       permissions = {
         allow = toolRules "allow";
         ask = toolRules "ask" ++ [ "Bash(gh pr ready *)" ];
