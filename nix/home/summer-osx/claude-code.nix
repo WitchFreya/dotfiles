@@ -1,5 +1,5 @@
 # Claude code was made a requirement for Summer so this endeavors to keep it as far from my own machines as possible.
-{ lib, ... }:
+{ config, lib, ... }:
 let
   mcps = {
     circleci = {
@@ -215,6 +215,35 @@ let
     );
 
   deniedConnectors = unusedConnectors ++ lib.catAttrs "replacesConnector" (lib.attrValues mcps);
+
+  # What iTerm2's Claude Code integration writes; declared because each upgrade replaces any hook list set here.
+  itermStatusHooks =
+    lib.genAttrs
+      [
+        "Notification"
+        "PermissionRequest"
+        "PostToolUse"
+        "PreToolUse"
+        "SessionEnd"
+        "SessionStart"
+        "Stop"
+        "StopFailure"
+        "SubagentStop"
+        "UserPromptSubmit"
+      ]
+      (
+        _:
+        lib.mkAfter [
+          {
+            hooks = [
+              {
+                type = "command";
+                command = "${config.home.homeDirectory}/.config/iterm2/cc-status";
+              }
+            ];
+          }
+        ]
+      );
 in
 {
   # Pulls direnv environments into Claude shells.
@@ -236,29 +265,44 @@ in
       deniedMcpServers = map (connector: { serverName = "claude.ai ${connector}"; }) deniedConnectors;
       # Prevents duplicate tool listings when these also appear in .mcp.json.
       disabledMcpjsonServers = lib.attrNames servers;
-      hooks = {
-        PreToolUse = [
-          {
-            matcher = "Bash";
-            hooks = [
-              {
-                type = "command";
-                command = "bash ${./claude-code-hooks/guard-bash.sh}";
-              }
-            ];
-          }
-        ];
-        SessionStart = [
-          {
-            hooks = [
-              {
-                type = "command";
-                command = "bash ${./claude-code-hooks/expire-memories.sh}";
-              }
-            ];
-          }
-        ];
-      };
+      tui = "fullscreen";
+      hooks = lib.mkMerge [
+        {
+          Notification = [
+            {
+              matcher = "permission_prompt";
+              hooks = [
+                {
+                  type = "command";
+                  command = "afplay /System/Library/Sounds/Glass.aiff";
+                }
+              ];
+            }
+          ];
+          PreToolUse = [
+            {
+              matcher = "Bash";
+              hooks = [
+                {
+                  type = "command";
+                  command = "bash ${./claude-code-hooks/guard-bash.sh}";
+                }
+              ];
+            }
+          ];
+          SessionStart = [
+            {
+              hooks = [
+                {
+                  type = "command";
+                  command = "bash ${./claude-code-hooks/expire-memories.sh}";
+                }
+              ];
+            }
+          ];
+        }
+        itermStatusHooks
+      ];
       permissions = {
         allow = toolRules "allow";
         ask = toolRules "ask" ++ [ "Bash(gh pr ready *)" ];
@@ -267,4 +311,42 @@ in
     };
     mcpServers = lib.mapAttrs (_: mcp: { inherit (mcp) url; }) servers;
   };
+
+  iterm2.profileSettings = {
+    # Esc+ lets Claude Code's Option shortcuts (Option+Enter, Option+P) through.
+    "Option Key Sends" = 2;
+    "Right Option Key Sends" = 2;
+    # Claude Code's notifications arrive as escape-sequence alerts.
+    "BM Growl" = true;
+    "Send Terminal Generated Alerts" = true;
+    # iTerm2's Claude Code integration moves a tab into its Claude Code workgroup while `claude` runs.
+    Triggers = [
+      {
+        action = "iTermEnterWorkgroupTrigger";
+        matchType = 113;
+        parameter = "builtin.claudeCode";
+        partial = false;
+        eventParams.jobName = "claude";
+        contentregex = "";
+        regex = "";
+        disabled = false;
+      }
+      {
+        action = "iTermExitWorkgroupTrigger";
+        matchType = 114;
+        parameter = "";
+        partial = false;
+        eventParams = {
+          jobName = "claude";
+          leaderOnly = true;
+        };
+        contentregex = "";
+        regex = "";
+        disabled = false;
+      }
+    ];
+  };
+
+  # Claude Code's /copy writes to the clipboard through an escape sequence.
+  targets.darwin.defaults."com.googlecode.iterm2".AllowClipboardAccess = true;
 }

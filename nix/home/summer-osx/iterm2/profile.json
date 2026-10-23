@@ -1,0 +1,99 @@
+{
+  "ASCII Ligatures": true,
+  "Ansi 0 Color": {
+    "Alpha Component": 1,
+    "Blue Component": 0.11764705926179886,
+    "Color Space": "sRGB",
+    "Green Component": 0.09803921729326245,
+    "Red Component": 0.0784313753247261
+  },
+  "Ansi 0 Color (Dark)": {
+    "Alpha Component": 1,
+    "Blue Component": 0.11764705926179886,
+    "Color Space": "sRGB",
+    "Green Component": 0.09803921729326245,
+    "Red Component": 0.0784313753247261
+  },
+  "Ansi 0 Color (Light)": {
+    "Alpha Component": 1,
+    "Blue Component": 0.11764705926179886,
+    "Color Space": "sRGB",
+    "Green Component": 0.09803921729326245,
+    "Red Component": 0.0784313753247261
+  },
+  "Bold Color": {
+    "Alpha Component": 1,
+    "Blue Component": 0.06274510174989698,
+    "Color Space": "sRGB",
+    "Green Component": 0.06274510174989698,
+    "Red Component": 0.06274510174989698
+  },
+  "Bold Color (Light)": {
+    "Alpha Component": 1,
+    "Blue Component": 0.06274509803921567,
+    "Color Space": "sRGB",
+    "Green Component": 0.06274509803921567,
+    "Red Component": 0.06274509803921567
+  },
+  "Draw Powerline Glyphs": true,
+  "Foreground Color": {
+    "Alpha Component": 1,
+    "Blue Component": 0.06274510174989698,
+    "Color Space": "sRGB",
+    "Green Component": 0.06274510174989698,
+    "Red Component": 0.06274510174989698
+  },
+  "Foreground Color (Light)": {
+    "Alpha Component": 1,
+    "Blue Component": 0.06274509803921567,
+    "Color Space": "sRGB",
+    "Green Component": 0.06274509803921567,
+    "Red Component": 0.06274509803921567
+  },
+  "Jobs to Ignore": [
+    "rlogin",
+    "ssh",
+    "slogin",
+    "telnet"
+  ],
+  "Keyboard Map": {
+    "0x7f-0x100000": {
+      "Action": 11,
+      "Text": "0x15"
+    },
+    "0x7f-0x80000": {
+      "Action": 11,
+      "Text": "0x1b 0x7f"
+    },
+    "0xf702-0x280000": {
+      "Action": 10,
+      "Text": "b"
+    },
+    "0xf702-0x300000": {
+      "Action": 11,
+      "Text": "0x1"
+    },
+    "0xf703-0x280000": {
+      "Action": 10,
+      "Text": "f"
+    },
+    "0xf703-0x300000": {
+      "Action": 11,
+      "Text": "0x5"
+    },
+    "0xf728-0x0": {
+      "Action": 11,
+      "Text": "0x4"
+    },
+    "0xf728-0x80000": {
+      "Action": 10,
+      "Text": "d"
+    }
+  },
+  "Minimum Contrast": 0,
+  "Normal Font": "FiraCodeNFM-Reg 18",
+  "Only The Default BG Color Uses Transparency": true,
+  "Prompt Before Closing 2": false,
+  "Terminal Type": "xterm-256color",
+  "Working Directory": "/Users/witch"
+}
