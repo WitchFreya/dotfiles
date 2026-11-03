@@ -319,33 +319,34 @@ in
     # Claude Code's notifications arrive as escape-sequence alerts.
     "BM Growl" = true;
     "Send Terminal Generated Alerts" = true;
-    # iTerm2's Claude Code integration moves a tab into its Claude Code workgroup while `claude` runs.
-    Triggers = [
-      {
-        action = "iTermEnterWorkgroupTrigger";
-        matchType = 113;
-        parameter = "builtin.claudeCode";
-        partial = false;
-        eventParams.jobName = "claude";
-        contentregex = "";
-        regex = "";
-        disabled = false;
-      }
-      {
-        action = "iTermExitWorkgroupTrigger";
-        matchType = 114;
-        parameter = "";
-        partial = false;
-        eventParams = {
-          jobName = "claude";
-          leaderOnly = true;
-        };
-        contentregex = "";
-        regex = "";
-        disabled = false;
-      }
-    ];
   };
+
+  # iTerm2's Claude Code integration moves a tab into its Claude Code workgroup while `claude` runs.
+  iterm2.triggers = [
+    {
+      action = "iTermEnterWorkgroupTrigger";
+      matchType = 113;
+      parameter = "builtin.claudeCode";
+      partial = false;
+      eventParams.jobName = "claude";
+      contentregex = "";
+      regex = "";
+      disabled = false;
+    }
+    {
+      action = "iTermExitWorkgroupTrigger";
+      matchType = 114;
+      parameter = "";
+      partial = false;
+      eventParams = {
+        jobName = "claude";
+        leaderOnly = true;
+      };
+      contentregex = "";
+      regex = "";
+      disabled = false;
+    }
+  ];
 
   # Claude Code's /copy writes to the clipboard through an escape sequence.
   targets.darwin.defaults."com.googlecode.iterm2".AllowClipboardAccess = true;

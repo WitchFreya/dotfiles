@@ -10,6 +10,7 @@ let
     // config.iterm2.profileSettings
     // {
       "Dynamic Profile Parent Name" = "Default";
+      Triggers = config.iterm2.triggers;
     };
 
   main = base // {
@@ -63,7 +64,24 @@ in
     description = "Settings other modules add to both dynamic profiles, such as claude-code.nix's.";
   };
 
+  options.iterm2.triggers = lib.mkOption {
+    type = lib.types.listOf (lib.types.attrsOf lib.types.anything);
+    default = [ ];
+    description = "Triggers for both dynamic profiles; each module's list is appended, where two profileSettings.Triggers would conflict.";
+  };
+
   config = {
+    # Cmd-click a Shortcut story number, such as sc-54442, [SC-54442], or a sc54062/ branch, to open the story.
+    iterm2.triggers = [
+      {
+        action = "iTermHyperlinkTrigger";
+        regex = "(?i)\\bsc-?(\\d+)";
+        parameter = "https://app.shortcut.com/summer/story/\\1";
+        partial = true;
+        disabled = false;
+      }
+    ];
+
     home.file."Library/Application Support/iTerm2/DynamicProfiles/summer.json".text = builtins.toJSON {
       Profiles = [
         main
