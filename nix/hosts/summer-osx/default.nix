@@ -31,6 +31,7 @@ in
     heroku
     netlify-cli
     postgresql_17
+    terraform
   ];
 
   homebrew.casks = [
