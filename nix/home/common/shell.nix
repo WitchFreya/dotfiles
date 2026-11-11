@@ -23,6 +23,8 @@
     sessionVariables = config.home.sessionVariables // {
       # https://donottrack.sh/
       DO_NOT_TRACK = 1;
+      # HashiCorp tools ignore DO_NOT_TRACK; this stops Terraform's update check
+      CHECKPOINT_DISABLE = 1;
     };
     shellAliases = {
       cat = "bat";
